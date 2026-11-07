@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#1d1d1d">
+<title>Страница-заглушка</title>
+<style>
+:root{color-scheme:dark;font-family:system-ui,-apple-system,'Segoe UI',Arial,sans-serif}*{box-sizing:border-box}body{margin:0;min-height:100svh;background:#1d1d1d;color:#f7f7f7;display:grid;place-items:center;text-align:center;padding:28px 16px}.wrap{width:min(100%,650px);transform:translateY(-2vh)}.found{font-size:clamp(17px,3vw,21px);font-weight:900;letter-spacing:1.2px;color:#00e979;margin:0 0 15px;text-transform:uppercase}.headline{font-size:clamp(22px,4.3vw,29px);font-weight:950;line-height:1.3;margin:12px 0}.hint{display:inline-block;margin:18px auto 36px;border:2px solid #ffcf00;border-radius:15px;padding:14px 18px;box-shadow:0 0 20px #ffc40065;font-size:clamp(14px,2.5vw,18px);font-weight:800;line-height:1.35;background:#26231a}.hint strong{color:#ffcf00}.hold{position:relative;width:194px;height:194px;margin:0 auto 35px;border-radius:50%;border:4px dashed #ff326c;background:#141414;color:white;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;text-decoration:none;box-shadow:0 0 32px #ff326c22;cursor:pointer;touch-action:manipulation;-webkit-user-select:none;user-select:none}.hold:focus-visible{outline:3px solid #ffcf00;outline-offset:7px}.finger{font-size:60px;line-height:1;color:#ff326c}.hold-label{font-size:14px;font-weight:900;letter-spacing:1px}.hold:active{transform:scale(.97);box-shadow:0 0 45px #ff326c66}.age{display:inline-flex;align-items:center;gap:15px;max-width:350px;padding:14px 20px;border:1px solid #353535;border-radius:13px;background:#242424;text-align:left;color:#ddd;font-size:15px;line-height:1.4}.age b{color:#ff326c}.lock{font-size:23px}.small{color:#aaa;font-size:12px;margin-top:18px}.small a{color:#ddd}.progress{position:absolute;inset:-5px;border-radius:50%;border:5px solid transparent;pointer-events:none}.hold.holding .progress{border-top-color:#ffcf00;animation:spin 1.1s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}@media(prefers-reduced-motion:reduce){.hold.holding .progress{animation:none}}
+</style>
+</head>
+<body>
+<main class="wrap">
+<p class="found">💝 НАЙДЕНО 147 ДЕВУШЕК РЯДОМ</p>
+<h1 class="headline">🔊 УДЕРЖИВАЙТЕ ПАЛЕЦ ДЛЯ ВХОДА!</h1>
+<h2 class="headline" lang="en">🔊 PRESS AND HOLD TO ENTER</h2>
+<div class="hint">Зажмите кнопку или нажмите на неё<br><strong>«ОТКРЫТЬ ССЫЛКУ» / «OPEN LINK»</strong></div>
+<a class="hold" id="go" href="https://bigolive.onelink.me/sG8X?is_retargeting=true&amp;pid=region_kol&amp;c=qwerzy" aria-label="Открыть BIGO LIVE">
+<span class="progress"></span><span class="finger">◎</span><span class="hold-label">ЗАЖМИ / HOLD</span>
+</a>
+<div class="age"><span class="lock">🔒</span><span>Только для пользователей <b>18+</b><br><span lang="en">For users aged <b>18+</b> only</span></span></div>
+<p class="small">Переход на BIGO LIVE. Число 147 — рекламный текст, а не результат поиска по геолокации.</p>
+</main>
+<script>
+const a=document.getElementById('go');let timer=null;const destination=a.href;
+function start(e){if(e.type==='pointerdown'&&e.button!==0)return;a.classList.add('holding');timer=setTimeout(()=>{window.location.assign(destination)},850)}
+function stop(){clearTimeout(timer);timer=null;a.classList.remove('holding')}
+a.addEventListener('pointerdown',start);['pointerup','pointercancel','pointerleave','contextmenu'].forEach(t=>a.addEventListener(t,stop));
+a.addEventListener('click',e=>{e.preventDefault();window.location.assign(destination)});
+</script>
+</body>
+</html>
